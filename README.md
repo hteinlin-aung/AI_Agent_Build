@@ -31,14 +31,7 @@ Uses (`llama3.2:3b`) to classify tickets. Validates the model’s answers, falls
 
 ### Stage 3 — Model comparison
 Runs **rules vs `llama3.2:3b` vs `qwen3:4b`** on 20 tickets that have the correct answer attached, then prints a scoreboard with **accuracy and speed**.
-
-| Contender | Accuracy | Avg. time per ticket |
-|---|---|---|
-| Rules (Stage 1) | 55% | instant |
-| llama3.2:3b | 85% | ~0.4 s |
-| **qwen3:4b** | **95%** | ~0.6 s |
-
-- **Memory matters on 8 GB.** Each model is unloaded after use because two models loaded at once can froze the system.
+Qwen achieves the highest accuracy at 95%. **Memory matters on 8 GB Mac.** Models must unloaded after use because two models loaded at once can froze the system.
 
 ### Stage 4 — The Mac Assistant (the actual agent)
 A terminal-based assistant that understands natural language, selects the appropriate tool, executes it, and uses the real results to answer questions.
@@ -52,8 +45,6 @@ A terminal-based assistant that understands natural language, selects the approp
 | `getMemoryStatus` | "Why is my Mac slow?" | `memory_pressure` + `sysctl vm.swapusage` |
 | `getTopApps` | "What's using the most memory?" | `ps` |
 | `findFiles` | "Find my resume files" | Spotlight (`mdfind`), **only** in Desktop / Documents / Downloads |
-
-**Safety (the most important part of building an agent)**
 
 ---
 
@@ -70,7 +61,7 @@ There is **no `npm install`**. The project has zero dependencies and uses only N
 
 ### 1. Get the code
 ```bash
-git clone <this-repo-url>
+git clone https://github.com/hteinlin-aung/AI_Agent_Build
 cd AI_Agent_Build
 ```
 
@@ -81,10 +72,10 @@ ollama pull qwen3:4b            # ~2.5 GB — Stage 3
 ollama pull qwen3:4b-instruct   # ~2.5 GB — Stage 4
 ollama list                     # check they're there
 ```
-Make sure the Ollama app is running (menu-bar icon) before Stages 2–4.
+Make sure the Ollama app is running before Stages 2–4.
 
 ### 3. Run a stage
-Always run commands **from inside that stage's folder**, because the code reads `./data/` relative to where you are.
+Always run commands **from inside that stage's folder**.
 
 ```bash
 # Stage 1 — no AI, no Ollama needed
@@ -108,25 +99,24 @@ node check-tools.js     # runs each tool on your Mac, no AI involved
 node index.js           # chat! type "reset" to clear memory, "exit" to quit
 ```
 
-**Questions to try in Stage 4:** *"How much storage do I have?"* · *"Why is my Mac slow?"* · *"What's using the most memory?"* · *"Find my resume files"* · *"Hello!"* (no tool needed) · *"Delete my Downloads folder"* (it should refuse)
+**Questions to try in Stage 4:** *"How much storage do I have?"* · *"Why is my Mac slow?"* · *"What's using the most memory?"* · *"Find my resume files"* · *"Hello!"* · *"Delete my Downloads folder"* (should refuse)
 
 ---
 
-## ⚠️ Cautions — please read before running
+## ⚠️ Cautions — read before running
 
 - **Not for low-memory machines.** Each model uses about 2.5–3 GB while loaded. **Under 8 GB it may freeze or become very slow**, and on 8 GB should **close heavy apps** (browsers, code editors…) first.
-- **macOS only for Stage 4.** The tools use Mac-only commands (`sw_vers`, `memory_pressure`, `mdfind`, …). On Windows or Linux, Stage 4's tools will fail.
+- **macOS only for Stage 4.** The tools use Mac-only commands. On Windows or Linux, Stage 4's tools will fail.
 - **Big downloads.** Each model is about 2–2.5 GB, roughly **7 GB** for all three. Delete them later with `ollama rm <model>`.
-- **Small models make mistakes.** They can misread a question or state something the data doesn't support. 
 - **Read-only, local and private.** Stage 4 can't change, move or delete anything. `findFiles` only searches file *names* in Desktop, Documents and Downloads.
-- **Free up memory when you're done.** `exit` in Stage 4 unloads the model. If you quit another way, run `ollama stop qwen3:4b-instruct`, or just quit the Ollama app.
+- **Free up memory when you're done.** `exit` in Stage 4 unloads the model.
 
 ---
 
 ## Built with
-JavaScript (Node.js, ES modules) · Ollama · llama3.2:3b · qwen3:4b · qwen3:4b-instruct · no external npm packages
+JavaScript (Node.js, ES modules) · Ollama · llama3.2:3b · qwen3:4b · qwen3:4b-instruct
 
 ## What's next
-- **Stage 4b:** let it *act*, with permission (quit an app, find duplicate files and move them to the **Trash**), where my code asks `Allow? (y/n)` before anything runs.
+- **Stage 4b:** let it *act*, with permission (quit an app, find duplicate files and move them to the **Trash**), where code asks `Allow? (y/n)`. 
 - **Stage 5:** rebuild the agent with **LangGraph**.
 - **Stage 6:** multiple agents working together.
