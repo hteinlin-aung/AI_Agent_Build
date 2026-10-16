@@ -1,0 +1,11 @@
+{
+  "name": "stage3-model-comparison",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Stage 3 of the AI Agent roadmap — rules vs two local LLMs (Ollama) on the same labelled tickets.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "node test.js"
+  }
+}

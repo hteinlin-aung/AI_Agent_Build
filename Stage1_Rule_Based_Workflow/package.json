@@ -1,0 +1,10 @@
+{
+  "name": "stage1-rule-based-triage",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Stage 1 of the AI Agent roadmap — rule-based ticket triage, no LLM.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  }
+}

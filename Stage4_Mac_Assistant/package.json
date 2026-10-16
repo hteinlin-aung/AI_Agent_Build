@@ -1,0 +1,12 @@
+{
+  "name": "stage4-mac-assistant",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Stage 4 of the AI Agent roadmap — a read-only Mac assistant agent: qwen3:4b (Ollama) decides which tool to call, Node runs it.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "node test.js",
+    "check": "node check-tools.js"
+  }
+}

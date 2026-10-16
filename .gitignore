@@ -1,0 +1,7 @@
+# My step-by-step learning notes — kept on my machine, not published
+Stage*/README.md
+Stage*/SOLUTION.md
+
+# System / dependency files
+.DS_Store
+node_modules/

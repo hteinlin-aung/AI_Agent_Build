@@ -1,0 +1,142 @@
+[
+  {
+    "id": "T-001",
+    "subject": "Requesting a refund for last month",
+    "body": "I was charged twice for my subscription. Please refund the extra charge.",
+    "customerTier": "Standard",
+    "expectedCategory": "Billing"
+  },
+  {
+    "id": "T-002",
+    "subject": "App crashes on login",
+    "body": "Every time I try to log in, the app crashes immediately. Not working at all.",
+    "customerTier": "Standard",
+    "expectedCategory": "Technical"
+  },
+  {
+    "id": "T-003",
+    "subject": "URGENT: production down",
+    "body": "Our integration stopped working entirely. Need this fixed ASAP.",
+    "customerTier": "Enterprise",
+    "expectedCategory": "Technical"
+  },
+  {
+    "id": "T-004",
+    "subject": "Question about invoice",
+    "body": "Can you explain the line items on my latest invoice?",
+    "customerTier": "Standard",
+    "expectedCategory": "Billing"
+  },
+  {
+    "id": "T-005",
+    "subject": "How do I change my password?",
+    "body": "Just need help finding the settings page.",
+    "customerTier": "Standard",
+    "expectedCategory": "General"
+  },
+  {
+    "id": "T-006",
+    "subject": "Bug in billing calculation",
+    "body": "There's a bug in the billing invoice calculation — the tax amount looks wrong.",
+    "customerTier": "Standard",
+    "expectedCategory": "Billing"
+  },
+  {
+    "id": "T-007",
+    "subject": "Enterprise account access issue",
+    "body": "One of our team members can't access the dashboard. General question, not urgent.",
+    "customerTier": "Enterprise",
+    "expectedCategory": "General"
+  },
+  {
+    "id": "T-008",
+    "subject": "ERROR 500 on checkout page",
+    "body": "Getting a server error whenever I try to check out.",
+    "customerTier": "Standard",
+    "expectedCategory": "Technical"
+  },
+  {
+    "id": "T-009",
+    "subject": "Feedback on new feature",
+    "body": "Just wanted to say the new dashboard looks great, no issues.",
+    "customerTier": "Standard",
+    "expectedCategory": "General"
+  },
+  {
+    "id": "T-010",
+    "subject": "asap - need charge reversed",
+    "body": "This is urgent, please reverse the duplicate charge from yesterday.",
+    "customerTier": "Standard",
+    "expectedCategory": "Billing"
+  },
+  {
+    "id": "T-011",
+    "subject": "General inquiry",
+    "body": "Do you offer discounts for annual plans?",
+    "customerTier": "Standard",
+    "expectedCategory": "General"
+  },
+  {
+    "id": "T-012",
+    "subject": "System crash during export",
+    "body": "The export tool crashed halfway through. Enterprise account, need this working again.",
+    "customerTier": "Enterprise",
+    "expectedCategory": "Technical"
+  },
+  {
+    "id": "T-013",
+    "subject": "Payment page won't load",
+    "body": "When I click Pay, the page spins forever and nothing happens.",
+    "customerTier": "Standard",
+    "expectedCategory": "Technical"
+  },
+  {
+    "id": "T-014",
+    "subject": "Wrong amount taken from my card",
+    "body": "You took 1,200 THB but my plan is only 900 THB.",
+    "customerTier": "Standard",
+    "expectedCategory": "Billing"
+  },
+  {
+    "id": "T-015",
+    "subject": "Not a bug, just a question",
+    "body": "Is there a dark mode? I'm not reporting an error, just curious.",
+    "customerTier": "Standard",
+    "expectedCategory": "General"
+  },
+  {
+    "id": "T-016",
+    "subject": "Can't log in since the update",
+    "body": "The login button does nothing since yesterday's update.",
+    "customerTier": "Enterprise",
+    "expectedCategory": "Technical"
+  },
+  {
+    "id": "T-017",
+    "subject": "Cancel my subscription",
+    "body": "Please cancel my plan at the end of this month and confirm I won't be billed again.",
+    "customerTier": "Standard",
+    "expectedCategory": "Billing"
+  },
+  {
+    "id": "T-018",
+    "subject": "Thanks for the fast fix!",
+    "body": "The crash I reported last week is gone. Great job, team.",
+    "customerTier": "Standard",
+    "expectedCategory": "General"
+  },
+  {
+    "id": "T-019",
+    "subject": "Receipt for tax purposes",
+    "body": "I need a PDF receipt for my company's accounting.",
+    "customerTier": "Enterprise",
+    "expectedCategory": "Billing"
+  },
+  {
+    "id": "T-020",
+    "subject": "Data not syncing",
+    "body": "Changes I make on my phone don't show up on my laptop.",
+    "customerTier": "Standard",
+    "expectedCategory": "Technical"
+  }
+]

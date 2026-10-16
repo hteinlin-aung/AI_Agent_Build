@@ -1,0 +1,11 @@
+{
+  "name": "stage2-ollama-classifier",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Stage 2 of the AI Agent roadmap — Stage 1 ticket triage with the category decided by a local LLM (Ollama).",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "node test.js"
+  }
+}
