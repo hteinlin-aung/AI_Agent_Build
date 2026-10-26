@@ -4,7 +4,7 @@ A learning project **step by step**, starting with plain rules and ending with a
 
 Everything runs **locally and for free**. It uses [Ollama](https://ollama.com) to run small open-source models, with **no cloud, no API keys and no cost**.
 
-> ⚠️ **This is just a prototype.** built it to learn how AI agents work under the hood, by hand, without frameworks. It's small, read-only and tested on Mac. Treat it as a demo and a learning reference.
+> ⚠️ **This is just a prototype.** built it to learn how AI agents work under the hood, by hand, without frameworks. It's small, read-only and actionable  tested on Mac. Treat it as a demo and a learning reference.
 
 ---
 
@@ -16,6 +16,7 @@ Everything runs **locally and for free**. It uses [Ollama](https://ollama.com) t
 | 2 | `Stage2_Ollama_Classifier` | Same tickets, but a local model picks the category | ✅ llama3.2:3b | Calling a model from code |
 | 3 | `Stage3_Model_Comparison` | Rules vs two models, scored on labelled tickets | ✅ llama + qwen | Measuring instead of guessing |
 | 4 | `Stage4_Mac_Assistant` | A chat agent that **decides which tool to use** to answer questions about your Mac | ✅ qwen3:4b-instruct | The agent loop + tools + safety |
+| 5 | `Stage4b_Permissioned_Actions` | An agent that do actions for you when you requested one | ✅ qwen3:4b-instruct | AgentLoop + tools & actionTools + permission gates + safety |
 
 Each stage builds on the one before it.
 
@@ -36,7 +37,10 @@ Qwen achieves the highest accuracy at 95%. **Memory matters on 8 GB Mac.** Model
 ### Stage 4 — The Mac Assistant (the actual agent)
 A terminal-based assistant that understands natural language, selects the appropriate tool, executes it, and uses the real results to answer questions.
 
-**5 read-only tools**
+### Stage 4b — Actionable Assistant
+Extends Stage 4 by allowing the agent to quit applications and move duplicate files from Downloads to the Trash, with a permission gate that requires user approval before any action is performed. Adds file validation, protected apps, and a code-level check to prevent the model from making up system information when it fails to call tools. All 66 action tests passed.
+
+<!-- **5 read-only tools**
 
 | Tool | Answers questions like | Reads from |
 |---|---|---|
@@ -44,7 +48,7 @@ A terminal-based assistant that understands natural language, selects the approp
 | `getDiskSpace` | "How much storage is free?" | `fs.statfsSync` |
 | `getMemoryStatus` | "Why is my Mac slow?" | `memory_pressure` + `sysctl vm.swapusage` |
 | `getTopApps` | "What's using the most memory?" | `ps` |
-| `findFiles` | "Find my resume files" | Spotlight (`mdfind`), **only** in Desktop / Documents / Downloads |
+| `findFiles` | "Find my resume files" | Spotlight (`mdfind`), **only** in Desktop / Documents / Downloads | -->
 
 ---
 
@@ -97,9 +101,17 @@ node test.js            # 42 tests (fake model + fake tools)
 node test-memory.js     # 12 tests for conversation memory
 node check-tools.js     # runs each tool on your Mac, no AI involved
 node index.js           # chat! type "reset" to clear memory, "exit" to quit
+
+# Stage 4b — Actionable agent
+cd Stage4b_Permissioned_Actions
+node test-actions.js   # 66 checks: temp folder + fake trash + fake quit.
+node test.js           # 42 — Stage 4 still works
+node test-memory.js    # 12 to test fake memory.
+node check-actions.js  # the real macOS parts, no model
+node index.js          # chat! the agent that can do some actions
 ```
 
-**Questions to try in Stage 4:** *"How much storage do I have?"* · *"Why is my Mac slow?"* · *"What's using the most memory?"* · *"Find my resume files"* · *"Hello!"* · *"Delete my Downloads folder"* (should refuse)
+**Questions to try in Stage 4b:** *"Why is my Mac slow?"* · *"What's using the most memory?"* · *"How much storage do I have?"* · *"Find duplicate files in my Downloads"* · *"Move the duplicates to the Trash"* · *"Quit Spodify"* (y/n) · *"Quit finder"* (should block) · *"Delete my Downloads folder"* (should refuse)
 
 ---
 
@@ -117,6 +129,5 @@ node index.js           # chat! type "reset" to clear memory, "exit" to quit
 JavaScript (Node.js, ES modules) · Ollama · llama3.2:3b · qwen3:4b · qwen3:4b-instruct
 
 ## What's next
-- **Stage 4b:** let it *act*, with permission (quit an app, find duplicate files and move them to the **Trash**), where code asks `Allow? (y/n)`. 
 - **Stage 5:** rebuild the agent with **LangGraph**.
 - **Stage 6:** multiple agents working together.

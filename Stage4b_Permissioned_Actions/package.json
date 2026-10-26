@@ -1,0 +1,15 @@
+{
+  "name": "stage4b-permissioned-actions",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Stage 4b of the AI Agent roadmap — the Mac assistant can now ACT (quit apps, move duplicate files to the Trash), but only after the user says y.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "node test.js",
+    "check": "node check-tools.js",
+    "test:actions": "node test-actions.js",
+    "check:actions": "node check-actions.js",
+    "test:nudge": "node test-nudge.js"
+  }
+}
