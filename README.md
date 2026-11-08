@@ -44,15 +44,6 @@ Extends Stage 4 by allowing the agent to quit applications and move duplicate fi
 ### Stage 5 — The same agent, rebuilt with LangGraph
 Stage 4b's hand-written `for` loop is replaced by a **graph**: named nodes joined by edges, with the state passed between them. Same model, same eight tools, same system prompt — only the control flow changes. LangGraph supplies the loop, the conversation memory (a checkpointer), the human approval step (`interrupt()`), and the safety limit.
 
-Two extra nodes were added after testing against the real model, because **a framework does not make a model smarter**:
-
-- **Verify** — catches an answer that states system facts when no tool was actually run.
-- **Parrot** — catches the model repeating its previous answer instead of responding to the new question.
-
-Declined actions are also removed from the stored conversation, so a repeated request is reconsidered instead of copied.
-
-**100 tests pass:** 49 main · 22 verify · 29 parrot.
-
 > **Stage 5 is the only stage with dependencies.** It needs `npm install`. Stages 1 to 4b still use nothing but Node's built-in features.
 
 ---
